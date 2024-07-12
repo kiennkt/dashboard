@@ -7,6 +7,7 @@ pipeline {
             steps { 
                 echo 'Kien Tuan Kim 123'
                 sh 'whoami;pwd'
+                sh 'netstat -tlpun'
             }
         }
     }
