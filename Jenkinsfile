@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Kien..'
+                echo 'Kien Tuan Kim'
                 sh 'whoami;pwd'
             }
         }
