@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Manage node server to create container') {
             steps {
-                sh 'pwd'
+                sh 'chmod +x /var/lib/jenkins/workspace/${JOB_NAME}@tmp/durable-*/script.sh.copy'
                 sh 'ansible-playbook -i inventory.ini playbook.yml'
             }
         }
