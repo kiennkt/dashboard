@@ -15,12 +15,9 @@ pipeline {
         }
         stage('Manage node server to create container') {
             steps {
-                sh 'docker stop dashboard'
-                sh 'docker rm dashboard'
-                sh 'docker run --name dashboard -dp 8888:80 kienkt/dashboard-react-app:latest'
-                // sh 'pwd'
+                sh 'pwd'
                 // sh 'chmod +x /var/lib/jenkins/workspace/${JOB_NAME}@tmp/durable-*/script.sh.copy'
-                // sh 'ansible-playbook -i inventory.ini playbook.yml'
+                sh 'ansible-playbook -i inventory.ini playbook.yml'
             }
         }
     }
