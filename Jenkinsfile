@@ -18,7 +18,7 @@ pipeline {
                 
                 sh 'whoami;pwd'
                 sh 'netstat -tlpun'
-                sh 'chmod +x /var/lib/jenkins/workspace/${JOB_NAME}@tmp/durable-*/script.sh.copy'
+                sh 'chmod +x /var/lib/jenkins/workspace/${JOB_NAME}@tmp/durable-*/'
             
                 sh 'ansible-playbook -i inventory.ini playbook.yml'
             }
