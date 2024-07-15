@@ -2,7 +2,7 @@ pipeline {
     agent {
         label 'ansible-server'
     }
-    // stages {
+    stages {
     //     stage('Build images && Push to docker') {
     //         steps { 
     //             sh 'docker build -t $JOB_NAME:v1.$BUILD_ID .'
