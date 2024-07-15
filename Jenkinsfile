@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-      label 'node1'
-    }
+    agent any
     stages {
         stage('Build images && Push to docker') {
             steps { 
