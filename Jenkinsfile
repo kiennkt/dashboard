@@ -15,8 +15,7 @@ pipeline {
     //     }
         stage('Manage node server to create container') {
             steps {
-                
-                sh 'whoami;pwd;netstat -tlpun'
+                sh 'whoami;pwd'
                 sh 'ansible-playbook -i inventory.ini playbook.yml'
                 // sh 'ansible-playbook -i inventory.ini playbook.yml'
             }
