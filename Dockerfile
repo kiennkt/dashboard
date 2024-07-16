@@ -17,6 +17,7 @@ COPY --from=build /app/build /usr/share/nginx/html
 RUN chown -R dashboard:dashboard /usr/share/nginx/html
 
 USER dashboard
+
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 # EXPOSE 80
 # CMD ["nginx", "-g", "daemon off;"]
