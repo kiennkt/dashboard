@@ -16,10 +16,8 @@ pipeline {
         stage('Manage node server to create container') {
             steps {
                 
-                sh 'whoami;pwd'
-                sh 'netstat -tlpun'
-                // sh 'chmod +x /var/lib/jenkins/workspace/${JOB_NAME}@tmp/durable-*/'
-                sh 'ansible-playbook -i inventory.ini playbook_bak.yml'
+                sh 'whoami;pwd;netstat -tlpun'
+                sh 'ansible-playbook -i inventory.ini playbook.yml'
                 // sh 'ansible-playbook -i inventory.ini playbook.yml'
             }
         }
