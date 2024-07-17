@@ -24,7 +24,7 @@ pipeline {
     post {
         always {
             robot outputPath: '.', passThreshold: 80.0, unstableThreshold: 70.0, onlyCritical: false,
-            outputFileName : "output.xml", reportFileName : 'report.html', logFileName : 'log.html',
+            outputFileName : "output.xml", reportFileName : 'report.html', logFileName : 'log.html'
         }
     }
 }
