@@ -12,7 +12,7 @@ FROM nginx:alpine
 
 RUN adduser -D dashboard
 
-COPY --from=build /app/dist /run
+COPY --from=build /app/build /run
 
 RUN chown -R dashboard:dashboard /usr/share/nginx/html
 
