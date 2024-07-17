@@ -15,11 +15,16 @@ pipeline {
         }
         stage('Manage node server to create container') {
             steps {
-                sh 'whoami;pwd'
                 sh 'cd ~/ansible-jenkins/'
                 sh 'ansible-playbook -i inventory.ini playbook_bak.yml'
-                // sh 'ansible-playbook -i inventory.ini playbook.yml'
             }
+        } 
+    }
+
+    post {
+        always {
+            robot outputPath: '.', passThreshold: 80.0, unstableThreshold: 70.0, onlyCritical: false,
+            outputFileName : "output.xml", reportFileName : 'report.html', logFileName : 'log.html',
         }
     }
 }
