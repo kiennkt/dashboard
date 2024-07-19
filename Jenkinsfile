@@ -4,8 +4,8 @@ pipeline {
     }
     environment {
         DOCKERHUB_CREDENTIALS = credentials('DockerHub')
-        DOCKER_IMAGE = '$JOB_NAME:v1.$BUILD_ID'
-        DOCKER_IMAGE_LATEST = '$JOB_NAME:latest'
+        DOCKER_IMAGE = 'JOB_NAME:v1.$BUILD_ID'
+        DOCKER_IMAGE_LATEST = 'JOB_NAME:latest'
     }
     stages {
         
