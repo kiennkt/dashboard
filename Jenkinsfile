@@ -2,10 +2,8 @@ pipeline {
     agent {
         label 'ansible-server'
     }
-    environment {
+    enviroment {
         DOCKERHUB_CREDENTIALS = credentials('DockerHub')
-        DOCKER_IMAGE = '$JOB_NAME:v1.$BUILD_ID'
-        DOCKER_IMAGE_LATEST = '$JOB_NAME:latest'
     }
     stages {
         
@@ -18,16 +16,16 @@ pipeline {
 
         stage('Build images && Push to docker') {
             steps { 
-                sh 'docker build -t DOCKER_IMAGE .'
-                sh 'docker tag DOCKER_IMAGE kienkt/DOCKER_IMAGE'
-                sh 'docker tag DOCKER_IMAGE kienkt/DOCKER_IMAGE_LATEST'
+                sh 'docker build -t $JOB_NAME:v1.$BUILD_ID .'
+                sh 'docker tag $JOB_NAME:v1.$BUILD_ID kienkt/$JOB_NAME:v1.$BUILD_ID'
+                sh 'docker tag $JOB_NAME:v1.$BUILD_ID kienkt/$JOB_NAME:latest'
             }
         }
 
         stage('Scan images by Trivy') {
             steps {
-                sh 'trivy image --exit-code 1 --severity CRITICAL,HIGH kienkt/DOCKER_IMAGE'
-                sh 'trivy image --exit-code 1 --severity CRITICAL,HIGH kienkt/DOCKER_IMAGE_LATEST'
+                sh 'trivy image --exit-code 1 --severity CRITICAL,HIGH kienkt/$JOB_NAME:v1.$BUILD_ID'
+                sh 'trivy image --exit-code 1 --severity CRITICAL,HIGH kienkt/$JOB_NAME:latest'
             }
         }
 
@@ -44,9 +42,9 @@ pipeline {
                 }
             }
             steps {
-                sh 'docker push kienkt/DOCKER_IMAGE'
-                sh 'docker push kienkt/DOCKER_IMAGE_LATEST'
-                sh 'docker rmi DOCKER_IMAGE kienkt/DOCKER_IMAGE kienkt/DOCKER_IMAGE_LATEST'
+                sh 'docker push kienkt/$JOB_NAME:v1.$BUILD_ID'
+                sh 'docker push kienkt/$JOB_NAME:latest'
+                sh 'docker rmi $JOB_NAME:v1.$BUILD_ID kienkt/$JOB_NAME:v1.$BUILD_ID kienkt/$JOB_NAME:latest'
             }
         }
 
