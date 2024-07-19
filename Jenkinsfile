@@ -6,7 +6,7 @@ pipeline {
 
         stage('Scan Dockerfile') {
             steps {
-                sh 'trivy config --exit-code --severity CRITICAL,HIGH,MEDIUM .'
+                sh 'trivy config --exit-code 1 --severity CRITICAL,HIGH,MEDIUM .'
             }
         }
 
