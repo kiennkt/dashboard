@@ -6,7 +6,6 @@ WORKDIR /app
 COPY . .
 RUN npm install && \
     npm run build
-
 ## run stage ##
 FROM nginx:alpine
 
