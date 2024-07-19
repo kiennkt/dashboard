@@ -2,9 +2,11 @@ pipeline {
     agent {
         label 'ansible-server'
     }
+    
     environment {
         DOCKERHUB_CREDENTIALS = credentials('DockerHub')
     }
+
     stages {
         
 
