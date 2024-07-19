@@ -17,7 +17,8 @@ COPY --from=build /app/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 RUN chown -R dashboard:dashboard /usr/share/nginx/html && \
-    chown -R dashboard:dashboard /etc/nginx/conf.d/default.conf
+    chown -R dashboard:dashboard /etc/nginx/conf.d/default.conf && \
+    chown -R dashboard:dashboard /var/cache/nginx
 
 USER dashboard
 
