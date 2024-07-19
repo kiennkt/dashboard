@@ -19,7 +19,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 RUN chown -R dashboard:dashboard /usr/share/nginx/html && \
     chown -R dashboard:dashboard /etc/nginx/conf.d/default.conf && \
     chown -R dashboard:dashboard /var/cache/nginx && \
-    chown -R dashboard:dashboard /var/run/nginx.pid
+    chown -R dashboard:dashboard /var/run/nginx
 
 USER dashboard
 
