@@ -31,8 +31,8 @@ pipeline {
 
         stage('Docker Login') {
             steps {
-                sh 'echo DOCKERHUB_CREDENTIALS_PSW'
-                sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW'
+                sh 'winpty docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
         stage('Push to Docker hub') {
