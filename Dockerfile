@@ -4,8 +4,8 @@ FROM node:18.18-alpine as build
 
 WORKDIR /app
 COPY . .
-RUN npm install && \
-    npm run build
+RUN npm install && npm run build
+
 ## run stage ##
 FROM nginx:alpine
 
