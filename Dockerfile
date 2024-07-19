@@ -10,7 +10,12 @@ RUN npm install && \
 ## run stage ##
 FROM nginx:alpine
 
+RUN addgroup -S dashboard && adduser -S dashboard -G dashboard
+
 COPY --from=build /app/build /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-# CMD ["nginx", "-g", "daemon off;"]
+
+RUN chown -R dashboard:dashboard /usr/share/nginx/html && \
+    chown -R dashboard:dashboard /etc/nginx/conf.d/default.conf
+

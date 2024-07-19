@@ -3,6 +3,13 @@ pipeline {
         label 'ansible-server'
     }
     stages {
+
+        stage('Scan Dockerfile') {
+            steps {
+                sh 'trivy config --exit-code --severity CRITICAL,HIGH .'
+            }
+        }
+
         stage('Build images && Push to docker') {
             steps { 
                 sh 'docker build -t $JOB_NAME:v1.$BUILD_ID .'
