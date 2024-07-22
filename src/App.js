@@ -39,7 +39,6 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 
-// Soft UI Dashboard React routes
 import routes from "routes";
 
 // Soft UI Dashboard React contexts
