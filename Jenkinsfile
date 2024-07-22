@@ -1,15 +1,7 @@
 pipeline {
-    agent {
-        label 'ansible-server'
-    }
-    
-    environment {
-        DOCKERHUB_CREDENTIALS = credentials('DockerHub')
-    }
+    agent none
 
     stages {
-        
-
         stage('Scan Dockerfile') {
             steps {
                 sh 'trivy config --exit-code 1 --severity CRITICAL,HIGH,MEDIUM .'
@@ -57,8 +49,8 @@ pipeline {
                 }
             }
             steps {
-                sh 'cd ~/ansible-jenkins/'
-                sh 'ansible-playbook -i inventory.ini playbook_bak.yml'
+                sh 'cd ~/ansible_config/'
+                sh 'ansible-playbook -i inventory.ini playbook.yml'
             }
         }
     }
