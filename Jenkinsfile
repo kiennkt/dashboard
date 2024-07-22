@@ -43,7 +43,7 @@ pipeline {
             //     }
             // }
             steps {
-                sh 'cd /etc/ansible/hosts'
+                sh 'cd ~/ansible_config'
                 sh 'ansible --version'
                 sh 'ansible-playbook -i inventory.ini playbook.yml'
             }
