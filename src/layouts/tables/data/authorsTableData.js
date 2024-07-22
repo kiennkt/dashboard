@@ -75,7 +75,7 @@ const authorsTableData = {
       ),
     },
     {
-      author: <Author image={team3} name="Kien KT" email="alexa@gmail.com" />,
+      author: <Author image={team3} name="Alex Sandro Ronaldo" email="alexa@gmail.com" />,
       function: <Function job="Programator" org="Developer" />,
       status: (
         <SoftBadge variant="gradient" badgeContent="offline" color="secondary" size="xs" container />
