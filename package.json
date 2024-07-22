@@ -2,7 +2,6 @@
   "name": "soft-ui-dashboard-react",
   "version": "4.0.1",
   "author": "Creative Tim",
-  "license": "SEE LICENSE IN <https://www.creative-tim.com/license>",
   "description": "ReactJS version of Soft UI Dashboard by Creative Tim",
   "dependencies": {
     "@emotion/cache": "11.11.0",
