@@ -8,7 +8,7 @@ pipeline {
             }
         }
 
-        stage('Build images && Push to docker') {
+        stage('Build images') {
             steps { 
                 sh 'docker build -t $JOB_NAME:v1.$BUILD_ID .'
                 sh 'docker tag $JOB_NAME:v1.$BUILD_ID kienkt/$JOB_NAME:v1.$BUILD_ID'
