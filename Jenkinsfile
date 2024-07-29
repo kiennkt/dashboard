@@ -43,7 +43,6 @@ pipeline {
                 }
             }
             steps {
-                
                 sh 'ansible-playbook -i inventory playbook.yml'
             }
         }
