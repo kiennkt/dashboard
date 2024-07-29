@@ -9,6 +9,9 @@ RUN npm install && npm run build
 ## run stage ##
 FROM nginx:alpine
 
+RUN apk update && \
+    apk upgrade --no-cache libcurl
+
 RUN addgroup -S dashboard-app && adduser -S dashboard-app -G dashboard-app
 
 COPY --from=build /app/build /usr/share/nginx/html
