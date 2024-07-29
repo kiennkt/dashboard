@@ -36,15 +36,13 @@ pipeline {
             }
         }
 
-        stage('Manage node server to create container') {
+        stage('Pull image and Create container') {
             when {
                 expression {
                     currentBuild.result == null || currentBuild.result == 'SUCCESS'
                 }
             }
             steps {
-                sh 'cd ~/ansible_config'
-                sh 'ansible --version'
                 sh 'ansible-playbook -i inventory.ini playbook.yml'
             }
         }
