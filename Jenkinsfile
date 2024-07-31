@@ -42,7 +42,6 @@ pipeline {
                     currentBuild.result == null || currentBuild.result == 'SUCCESS'
                 }
             }
-            
             steps {
                 sh 'ansible-playbook -i inventory playbook.yml'
             }
