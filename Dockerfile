@@ -3,8 +3,10 @@
 FROM node:18.18-alpine as build
 
 WORKDIR /app
+COPY package.json nginx.conf.
+RUN npm install
 COPY . .
-RUN npm install && npm run build
+RUN npm run build
 
 ## run stage ##
 FROM nginx:alpine
