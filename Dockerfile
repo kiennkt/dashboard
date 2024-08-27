@@ -24,6 +24,5 @@ RUN chown -R dashboard-app:dashboard-app /usr/share/nginx/html && \
     # chown -R dashboard-app:dashboard-app /etc/nginx/conf.d/default.conf && \
     chown -R dashboard-app:dashboard-app /var/cache/nginx && \
     chown -R dashboard-app:dashboard-app /var/run/
-
 USER dashboard-app
 
