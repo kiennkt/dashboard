@@ -52,8 +52,8 @@ const authorsTableData = {
 
   rows: [
     {
-      author: <Author image={team2} name="Kim Tuan Kien" email="kienkt123@gmail.com" />,
-      function: <Function job="Manager" org="Organization" />,
+      author: <Author image={team2} name="Alexander KienKT" email="alexander@gmail.com" />,
+      function: <Function job="Director" org="Organization" />,
       status: (
         <SoftBadge variant="gradient" badgeContent="online" color="success" size="xs" container />
       ),
