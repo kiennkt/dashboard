@@ -14,14 +14,14 @@ jobs:
       - name: Scan Dockerfile
         run: trivy config --exit-code 1 --severity CRITICAL,HIGH,MEDIUM .
 
-      - name: Build Image
-        run: docker build -t dashboard .
+      # - name: Build Image
+      #   run: docker build -t dashboard .
       
       - name: Scan Image
-        run: trivy image --exit-code 1 --severity CRITICAL,HIGH dashboard
+        run: trivy image --exit-code 1 --severity CRITICAL,HIGH kienkt/dashboard-react:latest
 
       - name: Build Image
-        run: docker run --name dashboard-app -dp 9999:80 dashboard
+        run: docker run --name dashboard-app -dp 9999:80 kienkt/dashboard-react:latest
 
       # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       # - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
