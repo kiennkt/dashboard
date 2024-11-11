@@ -8,7 +8,21 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Check version Trivy
-        run: trivy --version
+        run: |
+          pwd 
+          trivy --version
+      - name: Scan Dockerfile
+        run: trivy config --exit-code 1 --severity CRITICAL,HIGH,MEDIUM .
+
+      - name: Build Image
+        run: docker build -t dashboard .
+      
+      - name: Scan Image
+        run: trivy image --exit-code 1 --severity CRITICAL,HIGH dashboard
+
+      - name: Build Image
+        run: docker run --name dashboard-app -dp 9999:80 dashboard
+
       # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       # - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       # - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
