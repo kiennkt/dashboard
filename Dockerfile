@@ -3,7 +3,7 @@
 FROM node:18.18-alpine as build
 
 WORKDIR /app
-COPY package.json nginx.conf.
+COPY package.json nginx.conf
 RUN npm install
 COPY . .
 RUN npm run build
