@@ -33,6 +33,7 @@ pipeline {
                 sh 'docker push kienkt/$JOB_NAME:v1.$BUILD_ID'
                 sh 'docker push kienkt/$JOB_NAME:latest'
                 sh 'docker rmi $JOB_NAME:v1.$BUILD_ID kienkt/$JOB_NAME:v1.$BUILD_ID kienkt/$JOB_NAME:latest'
+                
             }
         }
 
