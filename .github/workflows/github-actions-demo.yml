@@ -16,12 +16,13 @@ jobs:
 
       # - name: Build Image
       #   run: docker build -t dashboard .
-      
+      - name: Login Docker hub
+        run: 
       - name: Scan Image
-        run: trivy image --exit-code 1 --severity CRITICAL,HIGH kienkt/dashboard-react:latest
+        run: trivy image --exit-code 1 --severity CRITICAL,HIGH kienkt/dashboard-react-app:latest
 
       - name: Build Image
-        run: docker run --name dashboard-app -dp 9999:80 kienkt/dashboard-react:latest
+        run: docker run --name dashboard-app -dp 9999:80 kienkt/dashboard-react-app:latest
 
       # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       # - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -32,3 +33,4 @@ jobs:
       #   run: |
       #     ls ${{ github.workspace }}
       # - run: echo "🍏 This job's status is ${{ job.status }}."
+      
