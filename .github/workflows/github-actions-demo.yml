@@ -18,6 +18,7 @@ jobs:
       - name: Login Docker hub
         run: 
       - name: Scan Image
+      
         run: trivy image --exit-code 1 --severity CRITICAL,HIGH kienkt/dashboard-react-app:latest
 
       - name: Build Image
