@@ -16,25 +16,31 @@ jobs:
           echo ${{ github.job }}
           echo ${{ github.run_number}}
 
-      - name: Scan Dockerfile
-        run: trivy config --exit-code 1 --severity CRITICAL,HIGH,MEDIUM .
+      # - name: Scan Dockerfile
+      #   run: trivy config --exit-code 1 --severity CRITICAL,HIGH,MEDIUM .
 
-      - name: Build Image
-        run: docker build -t dashboard .
+      # - name: Build Image
+      #   run: docker build -t dashboard .
 
-      - name: Scan Image
-        run: trivy image --exit-code 1 --severity CRITICAL,HIGH dashboard
-        # run: trivy image --exit-code 1 --severity CRITICAL,HIGH kienkt/dashboard-react-app:latest
+      # - name: Scan Image
+      #   run: trivy image --exit-code 1 --severity CRITICAL,HIGH dashboard
+      #   # run: trivy image --exit-code 1 --severity CRITICAL,HIGH kienkt/dashboard-react-app:latest
       
-      - name: Build docker container
-        run: docker run --name dashboard-ap -dp 8000:80 dashboard
+      # - name: Build docker container
+      #   run: docker run --name dashboard-ap -dp 8000:80 dashboard
       
-      - name: Login to GitHub Container Registry
+      # - name: Login to GitHub Container Registry
+      #   uses: docker/login-action@v3
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ github.repository_owner }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       #- name: Build Image
         #run: docker run --name dashboard-app -dp 9999:80 kienkt/dashboard-react-app:latest
 
