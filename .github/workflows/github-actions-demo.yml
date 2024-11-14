@@ -27,7 +27,7 @@ jobs:
         # run: trivy image --exit-code 1 --severity CRITICAL,HIGH kienkt/dashboard-react-app:latest
       
       - name: Build docker container
-        run: docker run --name dashboard-ap -dp 8000:80 dashboard
+        run: docker run --name dashboard-app -dp 8000:80 dashboard
       
       - name: Stop and remove docker container
         run: |
