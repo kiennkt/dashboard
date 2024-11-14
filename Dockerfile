@@ -26,3 +26,6 @@ RUN chown -R dashboard-app:dashboard-app /usr/share/nginx/html && \
     chown -R dashboard-app:dashboard-app /var/run/
 USER dashboard-app
 
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
