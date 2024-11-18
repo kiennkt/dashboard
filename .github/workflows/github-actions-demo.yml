@@ -3,7 +3,7 @@ on: [push]
 jobs:
   Build_and_Scan_Image:
     # runs-on: self-hosted # Or [self-hosted, label-1] 
-    runs-on: [self-hosted] 
+    runs-on: [self-hosted, label-1] 
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -21,6 +21,7 @@ jobs:
       - name: Check version Trivy
         run: |
           pwd 
+          trivy --version
           echo ${{ github.workspace }}
           echo ${{ github.action}}
           echo ${{ github.job }}
