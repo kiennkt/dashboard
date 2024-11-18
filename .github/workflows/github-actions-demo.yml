@@ -1,9 +1,9 @@
-name: Security Scanning Image
+name: Demo
 on: [push]
 jobs:
   Test1:
     # runs-on: self-hosted # Or [self-hosted, label-1] 
-    runs-on: [self-hosted, label-1] 
+    runs-on: [self-hosted, label-2] 
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -23,7 +23,7 @@ jobs:
 
   Test2:
     # runs-on: self-hosted # Or [self-hosted, label-1] 
-    runs-on: [self-hosted, label-1] 
+    runs-on: [self-hosted, label-2] 
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
