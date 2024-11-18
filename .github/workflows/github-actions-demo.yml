@@ -6,7 +6,10 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-
+      # - name: Clean enviroment after end of job
+      #   uses: FraBle/clean-after-action@v1
+      #   with:
+      #     keep-git: true
       - name: Check version Trivy
         run: |
           pwd 
@@ -59,5 +62,7 @@ jobs:
           docker rmi kienkt/dashboard-app:v1.${{ github.run_number }} kienkt/dashboard-app:latest dashboard
 
           
+
+  
 ##  Scan Dockerfile -> Build image -> Scan image -> Build docker container -> Test -> Stop && rm container -> Tag image
 ##  Login Docker hub or ghcr.io -> push Dockerhub or ghcr.io
