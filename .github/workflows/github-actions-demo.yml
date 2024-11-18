@@ -6,10 +6,17 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      # - name: Clean enviroment after end of job
-      #   uses: FraBle/clean-after-action@v1
-      #   with:
-      #     keep-git: true
+      - name: Clean enviroment after end of job
+        uses: FraBle/clean-after-action@v1
+        with:
+          keep-git: true
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Check version Trivy
         run: |
           pwd 
@@ -29,7 +36,7 @@ jobs:
         run: trivy image --exit-code 1 --severity CRITICAL,HIGH dashboard
         # run: trivy image --exit-code 1 --severity CRITICAL,HIGH kienkt/dashboard-react-app:latest
       
-      - name: Build docker container
+      - name: Build docker container  
         run: docker run --name dashboard-app -dp 8000:80 dashboard
       
       - name: Stop and remove docker container
@@ -48,12 +55,6 @@ jobs:
         run: |
           docker tag dashboard kienkt/dashboard-app:v1.${{ github.run_number }} 
           docker tag dashboard kienkt/dashboard-app:latest
-
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ vars.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
       
       - name: Push image to registry
         run: |
