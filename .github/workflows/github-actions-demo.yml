@@ -3,7 +3,7 @@ on: [push]
 jobs:
   Build_and_Scan_Image:
     # runs-on: self-hosted # Or [self-hosted, label-1] 
-    runs-on: [self-hosted, label-1,label-2] 
+    runs-on: [self-hosted, label-1] 
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -62,6 +62,12 @@ jobs:
       #     docker push kienkt/dashboard-app:v1.${{ github.run_number }}
       #     docker push kienkt/dashboard-app:latest
       #     docker rmi kienkt/dashboard-app:v1.${{ github.run_number }} kienkt/dashboard-app:latest dashboard
+  Test:
+    # runs-on: self-hosted # Or [self-hosted, label-1] 
+    runs-on: [self-hosted, label-1] 
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
 
           
 
