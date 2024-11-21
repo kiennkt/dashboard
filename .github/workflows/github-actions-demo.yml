@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - uses: eviden-actions/clean-self-hosted-runner@v1
+        if: ${{ always() }} 
 
       - name: Check version Trivy
         run: |
