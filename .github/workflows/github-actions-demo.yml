@@ -11,8 +11,9 @@ jobs:
       #   if: ${{ always() }} 
       - name: Print
         run: echo "Kim tuan Kien"
-        
 
+
+        
   Test2:
     # runs-on: self-hosted # Or [self-hosted, label-1] 
     runs-on: [self-hosted, label-2] 
