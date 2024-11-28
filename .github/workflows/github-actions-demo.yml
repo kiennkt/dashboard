@@ -10,14 +10,14 @@ jobs:
       # - uses: eviden-actions/clean-self-hosted-runner@v1
       #   if: ${{ always() }} 
 
-      - name: Check version Trivy
-        run: |
-          pwd 
-          trivy --version
-          echo ${{ github.workspace }}
-          echo ${{ github.action}}
-          echo ${{ github.job }}
-          echo ${{ github.run_number}}
+      # - name: Check version Trivy
+      #   run: |
+      #     pwd 
+      #     trivy --version
+      #     echo ${{ github.workspace }}
+      #     echo ${{ github.action}}
+      #     echo ${{ github.job }}
+      #     echo ${{ github.run_number}}
 
   Test2:
     # runs-on: self-hosted # Or [self-hosted, label-1] 
