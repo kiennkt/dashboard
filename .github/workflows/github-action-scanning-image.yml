@@ -3,7 +3,7 @@ on: [push]
 jobs:
   Build_and_Scan_Image:
     # runs-on: self-hosted # Or [self-hosted, label-1] 
-    runs-on: [self-hosted, label-2] 
+    runs-on: [self-hosted, label-3] 
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -16,6 +16,7 @@ jobs:
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Test Docker
         run: |
           docker images
@@ -64,15 +65,15 @@ jobs:
       #     docker push kienkt/dashboard-app:v1.${{ github.run_number }}
       #     docker push kienkt/dashboard-app:latest
       #     docker rmi kienkt/dashboard-app:v1.${{ github.run_number }} kienkt/dashboard-app:latest dashboard
-  Test:
-    # runs-on: self-hosted # Or [self-hosted, label-1] 
-    runs-on: [self-hosted, label-2] 
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: Printf
-        run: |
-          echo "This is job Test in Scan Image workflow"
+  # Test:
+  #   # runs-on: self-hosted # Or [self-hosted, label-1] 
+  #   runs-on: [self-hosted, label-3] 
+  #   steps:
+  #     - name: Check out repository code
+  #       uses: actions/checkout@v4
+  #     - name: Printf
+  #       run: |
+  #         echo "This is job Test in Scan Image workflow"
 
 
 ##  Scan Dockerfile -> Build image -> Scan image -> Build docker container -> Test -> Stop && rm container -> Tag image
