@@ -29,6 +29,7 @@ pipeline {
                     currentBuild.result == null || currentBuild.result == 'SUCCESS'
                 }
             }
+            
             steps {
                 sh 'docker push kienkt/$JOB_NAME:v1.$BUILD_ID'
                 sh 'docker push kienkt/$JOB_NAME:latest'
