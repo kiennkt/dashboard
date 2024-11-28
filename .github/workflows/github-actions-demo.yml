@@ -38,7 +38,5 @@ jobs:
           echo ${{ github.job }}
           echo ${{ github.run_number}}
 
-          
-
 ##  Scan Dockerfile -> Build image -> Scan image -> Build docker container -> Test -> Stop && rm container -> Tag image
 ##  Login Docker hub or ghcr.io -> push Dockerhub or ghcr.io
