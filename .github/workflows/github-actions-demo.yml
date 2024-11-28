@@ -1,5 +1,5 @@
 name: Demo
-on: [push]
+on: [fork]
 jobs:
   Test1:
     # runs-on: self-hosted # Or [self-hosted, label-1] 
