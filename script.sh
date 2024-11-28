@@ -9,6 +9,9 @@ check_access_log(){
     elif [ -f /var/log/secure ]; then
         echo "Checking logs SSH/Telnet in /var/log/secure"
         sudo grep -iE 'ssh|telnet' /var/log/secure 2>/dev/null || echo "Not found logs in /var/log/secure"
+    elif command -v journalctl >/dev/null 2>&1; then
+        echo "Checking SSH/Telnet logs with journalctl"
+        sudo journalctl -u ssh.service | grep -iE 'ssh|telnet' 2>/dev/null || echo "No SSH/Telnet logs found in journalctl."
     else
         echo "Not found log directory in system !!!"
     fi
@@ -116,15 +119,23 @@ list_exist_files_in_directories(){
 }
 
 ## Call func
-list_exist_files_in_directories
-echo ""
-list_exist_account
-echo ""
-check_filewall_config
-echo ""
-list_processes
+check_access_log
 echo ""
 get_infor_system
 echo ""
-check_access_log
+list_processes
 echo ""
+check_filewall_config
+echo ""
+list_exist_account
+echo ""
+list_exist_files_in_directories
+echo ""
+
+## Save to .log in /tmp directorry
+check_access_log > /tmp/ssh_telnet.log
+get_infor_system > /tmp/infor_system.log
+list_processes > /tmp/process.log
+check_filewall_config > /tmp/firewall.log
+list_exist_account > /tmp/exist_account.log
+list_exist_files_in_directories > /tmp/exist_file.log

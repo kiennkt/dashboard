@@ -7,8 +7,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - uses: eviden-actions/clean-self-hosted-runner@v1
-        if: ${{ always() }} 
+      # - uses: eviden-actions/clean-self-hosted-runner@v1
+      #   if: ${{ always() }} 
 
       - name: Check version Trivy
         run: |
@@ -25,6 +25,9 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - name: Printf
+        run: |
+          echo "This is job Test2 in Demo workflow"
 
 
 ##  Scan Dockerfile -> Build image -> Scan image -> Build docker container -> Test -> Stop && rm container -> Tag image
