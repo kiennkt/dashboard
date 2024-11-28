@@ -7,7 +7,6 @@ pipeline {
                 sh 'trivy config --exit-code 1 --severity CRITICAL,HIGH,MEDIUM .'
             }
         }
-
         stage('Build images') {
             steps { 
                 sh 'docker build -t $JOB_NAME:v1.$BUILD_ID .'
@@ -29,7 +28,7 @@ pipeline {
                     currentBuild.result == null || currentBuild.result == 'SUCCESS'
                 }
             }
-            
+
             steps {
                 sh 'docker push kienkt/$JOB_NAME:v1.$BUILD_ID'
                 sh 'docker push kienkt/$JOB_NAME:latest'
