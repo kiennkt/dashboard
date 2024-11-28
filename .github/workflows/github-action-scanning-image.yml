@@ -71,5 +71,6 @@ jobs:
         run: |
           echo "This is job Test in Scan Image workflow"
 
+          
 ##  Scan Dockerfile -> Build image -> Scan image -> Build docker container -> Test -> Stop && rm container -> Tag image
 ##  Login Docker hub or ghcr.io -> push Dockerhub or ghcr.io
