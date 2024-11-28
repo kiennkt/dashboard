@@ -34,6 +34,5 @@ jobs:
       - name: Sleep
         run: sleep 10
 
-
 ##  Scan Dockerfile -> Build image -> Scan image -> Build docker container -> Test -> Stop && rm container -> Tag image
 ##  Login Docker hub or ghcr.io -> push Dockerhub or ghcr.io
