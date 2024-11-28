@@ -11,14 +11,8 @@ jobs:
       #   if: ${{ always() }} 
       - name: Print
         run: echo "Kim tuan Kien"
-      - name: Check version Trivy
-        run: |
-          pwd 
-          trivy --version
-          echo ${{ github.workspace }}
-          echo ${{ github.action}}
-          echo ${{ github.job }}
-          echo ${{ github.run_number}}
+      - name: Sleep
+        run: sleep 10
 
   Test2:
     # runs-on: self-hosted # Or [self-hosted, label-1] 
@@ -37,6 +31,9 @@ jobs:
           echo ${{ github.action}}
           echo ${{ github.job }}
           echo ${{ github.run_number}}
+      - name: Sleep
+        run: sleep 10
+
 
 ##  Scan Dockerfile -> Build image -> Scan image -> Build docker container -> Test -> Stop && rm container -> Tag image
 ##  Login Docker hub or ghcr.io -> push Dockerhub or ghcr.io
