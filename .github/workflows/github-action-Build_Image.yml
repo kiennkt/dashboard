@@ -17,6 +17,7 @@ jobs:
           echo ${{ runner.temp}}
           echo ${{ github.workflow_sha }}
           echo ${{ github.sha }}
+          echo ${{ github.ref_name}}
 
   # Test2:
   #   # runs-on: self-hosted # Or [self-hosted, label-1] 
