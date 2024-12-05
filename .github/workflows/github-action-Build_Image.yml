@@ -13,26 +13,30 @@ jobs:
         run: |
           echo ${{ github.action }}
           echo ${{ github.action_ref }}
+          echo ${{ runner.arch }}
+          echo ${{ runner.temp}}
+          echo ${{ github.workflow_sha }}
+          echo ${{ github.sha }}
 
-  Test2:
-    # runs-on: self-hosted # Or [self-hosted, label-1] 
-    runs-on: [self-hosted, label-1] 
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: Printf
-        run: |
-          echo "This is job Test2 in Demo workflow"
-      - name: Check version Trivy
-        run: |
-          pwd 
-          trivy --version
-          echo ${{ github.workspace }}
-          echo ${{ github.action}}
-          echo ${{ github.job }}
-          echo ${{ github.run_number}}
-      - name: Sleep
-        run: sleep 10
+  # Test2:
+  #   # runs-on: self-hosted # Or [self-hosted, label-1] 
+  #   runs-on: [self-hosted, label-1] 
+  #   steps:
+  #     - name: Check out repository code
+  #       uses: actions/checkout@v4
+  #     - name: Printf
+  #       run: |
+  #         echo "This is job Test2 in Demo workflow"
+  #     - name: Check version Trivy
+  #       run: |
+  #         pwd 
+  #         trivy --version
+  #         echo ${{ github.workspace }}
+  #         echo ${{ github.action}}
+  #         echo ${{ github.job }}
+  #         echo ${{ github.run_number}}
+  #     - name: Sleep
+  #       run: sleep 10
 
 ##  Scan Dockerfile -> Build image -> Scan image -> Build docker container -> Test -> Stop && rm container -> Tag image
 ##  Login Docker hub or ghcr.io -> push Dockerhub or ghcr.io
