@@ -1,5 +1,5 @@
 name: Security Scanning Image
-on: [push]
+on: [fork]
 jobs:
   Build_and_Scan_Image:
     # runs-on: self-hosted # Or [self-hosted, label-1] 
