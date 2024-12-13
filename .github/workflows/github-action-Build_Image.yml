@@ -18,6 +18,13 @@ jobs:
           echo ${{ github.workflow_sha }} >> /tmp/result
           echo ${{ github.sha }} >> /tmp/result
           echo ${{ github.ref_name}} >> /tmp/result
+  TestAnsible:
+    runs-on: [self-hosted, label-1] 
+    steps:
+      - name: Run playbook
+        run: |
+          cd
+          pwd
 
   # Test2:
   #   # runs-on: self-hosted # Or [self-hosted, label-1] 
