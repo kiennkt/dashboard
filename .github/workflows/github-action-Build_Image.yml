@@ -25,6 +25,7 @@ jobs:
         run: |
           cd
           pwd
+          sshpass -p juniper@123 ansible-playbook -i inventory playbook.yml -k -v
 
   # Test2:
   #   # runs-on: self-hosted # Or [self-hosted, label-1] 
