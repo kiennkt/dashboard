@@ -1,23 +1,37 @@
 name: Demo
-on: [push]
+on:
+  push:
+    branches:
+      - main
+      - test
+
 jobs:
   Test1:
-    # runs-on: self-hosted # Or [self-hosted, label-1] 
     runs-on: [self-hosted, label-1] 
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      # - uses: eviden-actions/clean-self-hosted-runner@v1
-      #   if: ${{ always() }} 
-      - name: Print
+      - name: Sleep
+        run: sleep 10
+  Test2:
+    runs-on: [self-hosted, label-1] 
+    steps:
+      - name: Print builtin vars
         run: |
-          echo ${{ github.action }}
-          echo ${{ github.action_ref }}
-          echo ${{ runner.arch }}
-          echo ${{ runner.temp}}
-          echo ${{ github.workflow_sha }}
-          echo ${{ github.sha }}
-          echo ${{ github.ref_name}}
+          echo ${{ github.workspace }}
+          echo ${{ github.action}}
+          echo ${{ github.job }}
+          echo ${{ github.run_number}}
+
+      # - uses: eviden-actions/clean-self-hosted-runner@v1
+        # if: ${{ always() }} 
+      # - name: Print
+      #   run: |
+      #     echo ${{ github.action }}
+      #     echo ${{ github.action_ref }}
+      #     echo ${{ runner.arch }}
+      #     echo ${{ runner.temp}}
+      #     echo ${{ github.workflow_sha }}
+      #     echo ${{ github.sha }}
+      #     echo ${{ github.ref_name}}
 
   # Test2:
   #   # runs-on: self-hosted # Or [self-hosted, label-1] 
