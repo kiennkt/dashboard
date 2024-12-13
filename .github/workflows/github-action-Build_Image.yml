@@ -11,13 +11,13 @@ jobs:
       #   if: ${{ always() }} 
       - name: Print
         run: |
-          echo ${{ github.action }}
-          echo ${{ github.action_ref }}
-          echo ${{ runner.arch }}
-          echo ${{ runner.temp}}
-          echo ${{ github.workflow_sha }}
-          echo ${{ github.sha }}
-          echo ${{ github.ref_name}}
+          echo ${{ github.action }} >> /tmp/result
+          echo ${{ github.action_ref }} >> /tmp/result
+          echo ${{ runner.arch }} >> /tmp/result
+          echo ${{ runner.temp}} >> /tmp/result
+          echo ${{ github.workflow_sha }} >> /tmp/result
+          echo ${{ github.sha }} >> /tmp/result
+          echo ${{ github.ref_name}} >> /tmp/result
 
   # Test2:
   #   # runs-on: self-hosted # Or [self-hosted, label-1] 
