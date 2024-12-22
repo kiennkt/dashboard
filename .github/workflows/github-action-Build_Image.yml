@@ -2,17 +2,15 @@ name: Demo
 on:
   push:
     branches:
-      - test
-
-      
+      - main
 jobs:
   Test1:
-    runs-on: [self-hosted, label-1] 
+    runs-on: arc-runner-set
     steps:
       - name: Sleep
         run: sleep 10
   Test2:
-    runs-on: [self-hosted, label-1] 
+    runs-on: arc-runner-set
     steps:
       - name: Print builtin vars
         run: |
@@ -20,7 +18,11 @@ jobs:
           echo ${{ github.action}}
           echo ${{ github.job }}
           echo ${{ github.run_number}}
-
+  Test3:
+    runs-on: arc-runner-set
+    steps:
+      - name: Sleep 20
+        run: sleep 20
       # - uses: eviden-actions/clean-self-hosted-runner@v1
         # if: ${{ always() }} 
       # - name: Print
