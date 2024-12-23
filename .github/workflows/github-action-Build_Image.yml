@@ -5,12 +5,12 @@ on:
       - main
 jobs:
   Test1:
-    runs-on: arc-runner-set
+    runs-on: internal-arc-runners
     steps:
       - name: Sleep
         run: sleep 10
   Test2:
-    runs-on: arc-runner-set
+    runs-on: internal-arc-runners
     steps:
       - name: Print builtin vars
         run: |
@@ -18,9 +18,9 @@ jobs:
           echo ${{ github.action}}
           echo ${{ github.job }}
           echo ${{ github.run_number}}
-          
+
   Test3:
-    runs-on: arc-runner-set
+    runs-on: internal-arc-runners
     steps:
       - name: Sleep 20
         run: sleep 20
