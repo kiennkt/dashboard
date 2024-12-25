@@ -1,0 +1,74 @@
+name: Share data between jobs
+
+on: [push]
+
+jobs:
+  job_1:
+    name: Add 3 and 7
+    runs-on: internal-arc-runners
+    steps:
+      - shell: bash
+        run: |
+          expr 3 + 7 > math-homework.txt
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v4
+        with:
+          name: homework_pre
+          path: math-homework.txt
+
+  job_2:
+    name: Multiply by 9
+    needs: job_1
+    runs-on: internal-arc-runners
+    steps:
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v4
+        with:
+          name: homework_pre
+      - shell: bash
+        run: |
+          value=`cat math-homework.txt`
+          expr $value \* 9 > math-homework.txt
+      - name: Upload math result for job 2
+        uses: actions/upload-artifact@v4
+        with:
+          name: homework_final
+          path: math-homework.txt
+
+  job_3:
+    name: Display results
+    needs: job_2
+    runs-on: internal-arc-runners
+    steps:
+      - name: Download math result for job 2
+        uses: actions/download-artifact@v4
+        with:
+          name: homework_final
+      - name: Print the final result
+        shell: bash
+        run: |
+          value=`cat math-homework.txt`
+          echo The result is $value
+
+  # Test2:
+  #   # runs-on: self-hosted # Or [self-hosted, label-1] 
+  #   runs-on: [self-hosted, label-1] 
+  #   steps:
+  #     - name: Check out repository code
+  #       uses: actions/checkout@v4
+  #     - name: Printf
+  #       run: |
+  #         echo "This is job Test2 in Demo workflow"
+  #     - name: Check version Trivy
+  #       run: |
+  #         pwd 
+  #         trivy --version
+  #         echo ${{ github.workspace }}
+  #         echo ${{ github.action}}
+  #         echo ${{ github.job }}
+  #         echo ${{ github.run_number}}
+  #     - name: Sleep
+  #       run: sleep 10
+
+##  Scan Dockerfile -> Build image -> Scan image -> Build docker container -> Test -> Stop && rm container -> Tag image
+##  Login Docker hub or ghcr.io -> push Dockerhub or ghcr.io
