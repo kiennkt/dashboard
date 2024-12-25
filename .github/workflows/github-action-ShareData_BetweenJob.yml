@@ -9,11 +9,11 @@ jobs:
     steps:
       - shell: bash
         run: |
-          cat EOF << > build_vars.yml
+          cat << EOF > build_vars.yml
           job_id: ${{ github.job}}
           commit: ${{ github.sha}}
           git_branch: ${{ github.ref}}
-
+          EOF
       - name: Upload result for job 1
         uses: actions/upload-artifact@v4
         with:
