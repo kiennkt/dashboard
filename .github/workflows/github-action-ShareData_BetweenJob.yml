@@ -5,7 +5,7 @@ on: [push]
 jobs:
   job_1:
     name: Get variables
-    runs-on: test-arc-runners
+    runs-on: test-runners-set
     steps:
       - shell: bash
         run: |
@@ -24,17 +24,14 @@ jobs:
   job_2:
     name: Display results
     needs: job_1
-    runs-on: test-arc-runners
+    runs-on: test-runners-set
     steps:
       - name: Download result for job 1
         uses: actions/download-artifact@v4
         with:
           name: build_vars
       - name: Print the final result
-        shell: bash
-        run: |
-          build_vars=`cat build_vars.yml`
-          echo The result is $build_vars
+        run: cat build_vars.yml
 
   # Test2:
   #   # runs-on: self-hosted # Or [self-hosted, label-1] 
